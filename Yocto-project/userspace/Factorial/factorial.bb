@@ -2,13 +2,19 @@ SUMMARY = "Calculate Factorial"
 
 LICENSE = "MIT"
 
-LIC_FILES_CHCKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=1234567890"
+FILEEXTRAPATHS:prepend := "${THISDIR}/factorial:"
 
-SRC_URI = "file://factorial.c"
+LIC_FILES_CHCKSUM = "file://COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
-S = "${WORKDIR}/build"
+
+SRC_URI = "file://factorial.c \
+            file://COPYING.MIT"
+
+S = "${WORKDIR}"
 
 do compile() {
+
+    mkdir -p {S}
    ${CC} ${CFLAGS} ${LDFLAGS} ${WORKDIR}/factorial.c -o ${S}/factorial
 }
 
